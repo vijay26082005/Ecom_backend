@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 20px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            background-color: #28a745;
+            padding: 6px 12px;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #218838;
+        }
+
+        .view-cart {
+            display: block;
+            width: 150px;
+            margin: 20px auto;
+            text-align: center;
+            background-color: #17a2b8;
+        }
+
+        .view-cart:hover {
+            background-color: #138496;
+        }
+    </style>
+<body>
+<h1>Available Products</h1>
+<table>
+    <tr><th>Name</th><th>Price</th><th>Action</th></tr>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.price}"></td>
+        <td><a th:href="@{/add-to-cart/{id}(id=${product.id})}">Add to Cart</a></td>
+    </tr>
+</table>
+<a href="/cart">View Cart</a>
+<script>
+    function confirmAddToCart(url){
+        alert('Product Added To Cart');
+        window.location.href=url;
+    }
+</script>
+</body>
+</html>
