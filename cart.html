@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 20px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        h3 {
+            text-align: center;
+            color: #333;
+            margin-top: 30px;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            margin: 10px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .checkout {
+            background-color: #28a745;
+        }
+
+        .checkout:hover {
+            background-color: #218838;
+        }
+
+        .back {
+            background-color: #17a2b8;
+        }
+
+        .back:hover {
+            background-color: #138496;
+        }
+
+        .btn-group {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+<body>
+<h1>Your Shopping Cart</h1>
+<table>
+    <tr><th>Name</th><th>Qty</th><th>Price</th></tr>
+    <tr th:each="item : ${items}">
+        <td th:text="${item.product.name}"></td>
+        <td th:text="${item.quantity}"></td>
+        <td th:text="${item.product.price * item.quantity}"></td>
+    </tr>
+</table>
+<h3>Total: ₹<span th:text="${total}"></span></h3>
+<a href="/checkout">Checkout</a> | <a href="/">Continue Shopping</a>
+</body>
+</html>
+</body>
+</html>
